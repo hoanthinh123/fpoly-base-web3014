@@ -1,0 +1,15 @@
+{
+    "name": "asus/fpoly-base-web3014",
+    "autoload": {
+        "psr-4": {
+            "Asus\\FpolyBaseWeb3014\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "hoan",
+            "email": "hoanthinh311@gmail.com"
+        }
+    ],
+    "require": {}
+}
