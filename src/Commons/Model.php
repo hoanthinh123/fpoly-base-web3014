@@ -32,18 +32,18 @@ class Model
     public function all()
     {
         return $this->queryBuilder
-        ->select('*')
-        ->from($this->tableName)
-        ->orderBy('id', 'desc')
-        ->fetchAllAssociative();
+            ->select('*')
+            ->from($this->tableName)
+            ->orderBy('id', 'desc')
+            ->fetchAllAssociative();
     }
 
     public function count()
     {
         return $this->queryBuilder
-        ->select("COUNT(*) as $this->tableName")
-        ->from($this->tableName)
-        ->fetchOne();
+            ->select("COUNT(*) as $this->tableName")
+            ->from($this->tableName)
+            ->fetchOne();
     }
 
     public function paginate($page = 1, $perPage = 5)
@@ -51,12 +51,12 @@ class Model
         $offset = $perPage * ($page - 1);
 
         $data = $this->queryBuilder
-        ->select('*')
-        ->from($this->tableName)
-        ->setFirstResult($offset)
-        ->setMaxResults($perPage)
-        ->orderBy('id', 'desc')
-        ->fetchAllAssociative();
+            ->select('*')
+            ->from($this->tableName)
+            ->setFirstResult($offset)
+            ->setMaxResults($perPage) // số lượng bản ghi trên 1 trang
+            ->orderBy('id', 'desc')
+            ->fetchAllAssociative();
 
         $totalPage = ceil($this->count() / $perPage);
 
@@ -89,9 +89,9 @@ class Model
             // $query->setValue('address', '?')->setParameter(2, $data['address']);
 
             $index = 0;
-            foreach($data as $key => $value) {
+            foreach ($data as $key => $value) {
                 $query->setValue($key, '?')->setParameter($index, $value);
-                
+
                 ++$index;
             }
 
@@ -99,7 +99,7 @@ class Model
 
             return true;
         }
-        
+
         return false;
     }
 
@@ -115,7 +115,7 @@ class Model
             // ];
 
             $index = 0;
-            foreach($data as $key => $value) {
+            foreach ($data as $key => $value) {
                 $query->set($key, '?')->setParameter($index, $value);
 
                 ++$index;
@@ -127,12 +127,12 @@ class Model
 
             return true;
         }
-        
+
         return false;
     }
 
     public function delete($id)
-    {        
+    {
         return $this->queryBuilder
             ->delete($this->tableName)
             ->where('id = ?')
