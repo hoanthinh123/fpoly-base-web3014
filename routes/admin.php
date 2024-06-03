@@ -17,5 +17,4 @@ $router->mount('/admin', function () use ($router) {
         $router->post('/{id}/update',   ProductController::class . '@update'); // Lưu sửa vào DB
         $router->get('/{id}/delete',    ProductController::class . '@delete'); // Xóa
     });
-    
 });

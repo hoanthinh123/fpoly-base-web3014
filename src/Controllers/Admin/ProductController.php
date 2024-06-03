@@ -8,8 +8,9 @@ use Asus\FpolyBaseWeb3014\Models\Category;
 use Asus\FpolyBaseWeb3014\Models\Product;
 use Rakit\Validation\Validator;
 
-class ProductController extends Controller{
-     private Product $product;
+class ProductController extends Controller
+{
+    private Product $product;
     private Category $category;
 
     public function __construct()
@@ -157,7 +158,7 @@ class ProductController extends Controller{
 
             $this->product->update($id, $data);
 
-            if ($product['img_thumbnail'] && file_exists( PATH_ROOT . $product['img_thumbnail'] ) ) {
+            if ($product['img_thumbnail'] && file_exists(PATH_ROOT . $product['img_thumbnail'])) {
                 unlink(PATH_ROOT . $product['img_thumbnail']);
             }
 
@@ -176,7 +177,7 @@ class ProductController extends Controller{
 
             $this->product->delete($id);
 
-            if ($product['img_thumbnail'] && file_exists( PATH_ROOT . $product['img_thumbnail'] ) ) {
+            if ($product['img_thumbnail'] && file_exists(PATH_ROOT . $product['img_thumbnail'])) {
                 unlink(PATH_ROOT . $product['img_thumbnail']);
             }
 
