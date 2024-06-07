@@ -138,7 +138,7 @@ class ProductController extends Controller
                 'name'          => $_POST['name'],
                 'overview'      => $_POST['overview'],
                 'content'       => $_POST['content'],
-                'updated_at'    => date('Y-m-d H:i:s')
+                'updated_at'    => date('Y-m-d H:i:s'),
             ];
 
             if (!empty($_FILES['img_thumbnail']) && $_FILES['img_thumbnail']['size'] > 0) {
